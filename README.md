@@ -9,18 +9,10 @@ Proyecto de ingesta, auditoría y analítica de 9.994 líneas de venta de Sample
 Docker Desktop, Docker Compose y el CSV `data/Sample - Superstore.csv`. Se reutiliza el entorno Hive de la práctica L17 en `D:\UNIVALLE\BIGDATA\docker-hadoop-hive-parquet`.
 
 ```powershell
-$stack = 'D:\UNIVALLE\BIGDATA\docker-hadoop-hive-parquet\docker-compose.yml'
-docker compose -f $stack up -d postgres namenode datanode hive-metastore hive-server
-$raw = [IO.File]::ReadAllText((Resolve-Path 'data\Sample - Superstore.csv'), [Text.Encoding]::GetEncoding(1252))
-[IO.File]::WriteAllText((Join-Path (Get-Location) 'data\superstore_utf8.csv'), $raw, [Text.UTF8Encoding]::new($false))
-docker cp 'data\superstore_utf8.csv' hive-server:/tmp/superstore.csv
-Get-ChildItem sql\*.sql,sql\preguntas\*.sql | ForEach-Object {
-  docker cp $_.FullName "hive-server:/tmp/$($_.Name)"
-  docker exec hive-server beeline -u 'jdbc:hive2://localhost:10000/default' -n hive -f "/tmp/$($_.Name)"
-}
+& .\scripts\ejecutar_hive.ps1
 ```
 
-Ejecutar primero `00_modelo.sql`, después `01_carga.sql` y finalmente las preguntas en orden. La carga sobrescribe la tabla analítica. Fechas de origen: mes/día/año.
+El script inicia el stack, espera a HiveServer2, normaliza la codificación del CSV de Windows-1252 a UTF-8, ejecuta modelo, carga y preguntas en orden, y guarda la salida de Beeline en `evidencias/hive/`. La carga sobrescribe la tabla analítica. Fechas de origen: mes/día/año.
 
 ## Entregables
 

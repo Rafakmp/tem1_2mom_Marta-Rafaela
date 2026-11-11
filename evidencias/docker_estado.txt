@@ -1,0 +1,6 @@
+Docker Desktop.exe: proceso iniciado.
+docker info: failed to connect to the docker API at npipe:////./pipe/docker_engine; the system cannot find the file specified.
+Get-Service com.docker.service: Stopped.
+Start-Service com.docker.service: no se puede abrir el servicio com.docker.service en el equipo; acceso denegado.
+Hive y Beeline: no ejecutados en esta sesión.
+scripts/ejecutar_hive.ps1: docker compose up -d falló; "No se pudo iniciar el stack Hive".
