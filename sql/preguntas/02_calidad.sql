@@ -16,24 +16,15 @@ SELECT COUNT(*) registros, COUNT(DISTINCT row_id) ids_fila,
  SUM(CASE WHEN envio<pedido THEN 1 ELSE 0 END) envios_anteriores
 FROM a;
 
-SELECT 'row_id' campo, SUM(CASE WHEN row_id IS NULL OR TRIM(row_id)='' THEN 1 ELSE 0 END) nulos FROM superstore_csv
-UNION ALL SELECT 'order_id', SUM(CASE WHEN order_id IS NULL OR TRIM(order_id)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'order_date', SUM(CASE WHEN order_date IS NULL OR TRIM(order_date)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'ship_date', SUM(CASE WHEN ship_date IS NULL OR TRIM(ship_date)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'ship_mode', SUM(CASE WHEN ship_mode IS NULL OR TRIM(ship_mode)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'customer_id', SUM(CASE WHEN customer_id IS NULL OR TRIM(customer_id)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'customer_name', SUM(CASE WHEN customer_name IS NULL OR TRIM(customer_name)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'segment', SUM(CASE WHEN segment IS NULL OR TRIM(segment)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'country', SUM(CASE WHEN country IS NULL OR TRIM(country)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'city', SUM(CASE WHEN city IS NULL OR TRIM(city)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'state', SUM(CASE WHEN state IS NULL OR TRIM(state)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'postal_code', SUM(CASE WHEN postal_code IS NULL OR TRIM(postal_code)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'region', SUM(CASE WHEN region IS NULL OR TRIM(region)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'product_id', SUM(CASE WHEN product_id IS NULL OR TRIM(product_id)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'category', SUM(CASE WHEN category IS NULL OR TRIM(category)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'sub_category', SUM(CASE WHEN sub_category IS NULL OR TRIM(sub_category)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'product_name', SUM(CASE WHEN product_name IS NULL OR TRIM(product_name)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'sales', SUM(CASE WHEN sales IS NULL OR TRIM(sales)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'quantity', SUM(CASE WHEN quantity IS NULL OR TRIM(quantity)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'discount', SUM(CASE WHEN discount IS NULL OR TRIM(discount)='' THEN 1 ELSE 0 END) FROM superstore_csv
-UNION ALL SELECT 'profit', SUM(CASE WHEN profit IS NULL OR TRIM(profit)='' THEN 1 ELSE 0 END) FROM superstore_csv;
+SELECT campo, SUM(CASE WHEN valor IS NULL OR TRIM(valor)='' THEN 1 ELSE 0 END) nulos
+FROM superstore_csv
+LATERAL VIEW STACK(21,
+ 'row_id',row_id, 'order_id',order_id, 'order_date',order_date,
+ 'ship_date',ship_date, 'ship_mode',ship_mode, 'customer_id',customer_id,
+ 'customer_name',customer_name, 'segment',segment, 'country',country,
+ 'city',city, 'state',state, 'postal_code',postal_code, 'region',region,
+ 'product_id',product_id, 'category',category, 'sub_category',sub_category,
+ 'product_name',product_name, 'sales',sales, 'quantity',quantity,
+ 'discount',discount, 'profit',profit
+) campos AS campo, valor
+GROUP BY campo ORDER BY campo;

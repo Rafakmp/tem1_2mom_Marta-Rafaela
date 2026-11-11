@@ -2,5 +2,11 @@ Docker Desktop.exe: proceso iniciado.
 docker info: failed to connect to the docker API at npipe:////./pipe/docker_engine; the system cannot find the file specified.
 Get-Service com.docker.service: Stopped.
 Start-Service com.docker.service: no se puede abrir el servicio com.docker.service en el equipo; acceso denegado.
-Hive y Beeline: no ejecutados en esta sesión.
+Intento inicial: Hive y Beeline no llegaron a ejecutarse.
 scripts/ejecutar_hive.ps1: docker compose up -d falló; "No se pudo iniciar el stack Hive".
+
+Estado posterior en la misma sesión: Docker Engine 29.7.2 disponible.
+Docker Compose inició postgres, namenode, datanode, hive-metastore y hive-server.
+HiveServer2 llegó al estado healthy y Beeline conectó a Apache Hive 4.0.1.
+DDL, carga y preguntas 1 a 8 ejecutadas; salidas en evidencias/hive/.
+La carga devolvió 9994 filas. La consulta temporal final devolvió 48 meses.

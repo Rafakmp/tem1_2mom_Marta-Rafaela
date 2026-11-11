@@ -19,7 +19,7 @@ $items = foreach ($r in $rows) {
 function SumField($group, $field) {
   $sum = [decimal]0
   foreach ($x in $group) { $sum += $x.$field }
-  return [math]::Round($sum,2)
+  return [math]::Round($sum,2,[MidpointRounding]::AwayFromZero)
 }
 $nulls = [ordered]@{}
 foreach ($name in $rows[0].PSObject.Properties.Name) {

@@ -72,7 +72,7 @@
                     },
                     {
                         "region":  "South",
-                        "sales":  391721.90,
+                        "sales":  391721.91,
                         "profit":  46749.43
                     },
                     {
@@ -220,7 +220,7 @@
     "top_months":  [
                        {
                            "month":  "2017-11",
-                           "sales":  118447.82,
+                           "sales":  118447.83,
                            "profit":  9690.10
                        },
                        {
@@ -330,7 +330,7 @@
                                        "id":  "FUR-TA-10001889",
                                        "name":  "Bush Advantage Collection Racetrack Conference Table",
                                        "category":  "Furniture",
-                                       "sales":  9544.72,
+                                       "sales":  9544.73,
                                        "profit":  -1934.40,
                                        "quantity":  33
                                    }
