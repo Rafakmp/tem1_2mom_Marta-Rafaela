@@ -14,6 +14,13 @@
 
 **Estrategia:** agrupar por región y año; `LAG()` calcula ventas del año anterior y el margen es ganancia/ventas. **Consulta:** [03_regiones.sql](../sql/preguntas/03_regiones.sql). **Evidencia:** [Hive](../evidencias/hive/03_regiones.txt) y [auditoría local, `annual` y `regions`](../evidencias/auditoria_csv.json). **Resultado:** West: ventas 725.457,82 y ganancias 108.418,45; East: 678.781,24 y 91.522,78; South: 391.721,91 y 46.749,43; Central: 501.239,89 y 39.706,36. West lidera en ganancia y ventas acumuladas; Central tiene la menor ganancia y menor margen. En 2017 West alcanza ventas 250.128,37 y ganancia 43.808,96. **Interpretación:** el crecimiento de ventas no garantiza un margen alto: Central vende más que South y gana menos. **Conclusión:** priorizar la revisión de descuentos y mezcla de productos en Central.
 
+| Región | 2014 ventas / ganancia | 2015 ventas / ganancia | 2016 ventas / ganancia | 2017 ventas / ganancia |
+|---|---:|---:|---:|---:|
+| Central | 103.838,16 / 539,55 | 102.874,22 / 11.716,80 | 147.429,38 / 19.899,16 | 147.098,13 / 7.550,84 |
+| East | 128.680,46 / 17.059,61 | 156.332,06 / 21.091,01 | 180.685,82 / 20.141,60 | 213.082,90 / 33.230,56 |
+| South | 103.845,84 / 11.879,12 | 71.359,98 / 8.318,59 | 93.610,22 / 17.702,81 | 122.905,86 / 8.848,91 |
+| West | 147.883,03 / 20.065,69 | 139.966,25 / 20.492,19 | 187.480,18 / 24.051,61 | 250.128,37 / 43.808,96 |
+
 ## Pregunta 4. Segmentación RFM
 
 **Estrategia:** referencia 2017-12-30; recencia en días desde última compra, frecuencia por órdenes distintas y monto por suma de ventas. `NTILE(5)` da valores altos a mejor recencia, frecuencia y monto. Alto valor: R,F,M ≥4; recurrente: F≥4 y R≥3; riesgo: R≤2 y F≥3 o M≥3; demás: otros. Las reglas se aplican en ese orden. **Consulta:** [04_rfm.sql](../sql/preguntas/04_rfm.sql). **Evidencia y resultado:** [Beeline](../evidencias/hive/04_rfm.txt): 104 alto valor, 131 recurrentes, 201 en riesgo y 357 otros. **Interpretación:** la frecuencia se mide por pedidos, evitando inflar el puntaje por pedidos con varias líneas. **Conclusión:** los clientes en riesgo son candidatos a acciones de retención; la etiqueta describe comportamiento histórico, no probabilidad calibrada de abandono.
@@ -22,9 +29,22 @@
 
 **Estrategia:** agregar por `product_id`, calcular margen, `RANK()` y `DENSE_RANK()` por categoría, además de ganancia acumulada. Se muestran tanto ventas monetarias como unidades para cubrir ambas acepciones de volumen. **Consulta:** [05_productos.sql](../sql/preguntas/05_productos.sql). **Evidencia:** [Beeline](../evidencias/hive/05_productos.txt). **Resultado:** `TEC-CO-10004722` lidera ventas (61.599,82) y ganancias (25.199,93). El menos rentable es `TEC-MA-10000418` (−8.879,97). El mayor volumen en unidades es `TEC-AC-10003832`, con 75. La consulta muestra cinco líderes de cada categoría y cinco productos con menores ganancias. **Interpretación:** unidades y rentabilidad son medidas distintas; el mayor volumen no implica la mayor ganancia. **Conclusión:** revisar el precio y descuento de las impresoras 3D con pérdidas acumuladas.
 
+| Categoría | Cinco productos con mayor ganancia, en orden (Product ID) | Ganancia del primero |
+|---|---|---:|
+| Furniture | FUR-CH-10000454, FUR-CH-10004063, FUR-CH-10002320, FUR-CH-10004086, FUR-CH-10001854 | 1.927,44 |
+| Office Supplies | OFF-BI-10003527, OFF-BI-10001120, OFF-AP-10002945, OFF-BI-10003925, OFF-BI-10004600 | 7.753,04 |
+| Technology | TEC-CO-10004722, TEC-CO-10001449, TEC-CO-10003763, TEC-AC-10002049, TEC-MA-10001127 | 25.199,93 |
+
 ## Pregunta 6. Impacto de los descuentos
 
 **Estrategia:** clasificar 0, (0,0,2], (0,2,0,5] y más de 0,5; sumar ventas y ganancias, contar pérdidas y no rentables, y desglosar subcategorías. **Consulta:** [06_descuentos.sql](../sql/preguntas/06_descuentos.sql). **Evidencia:** [Beeline](../evidencias/hive/06_descuentos.txt). **Resultado:** sin descuento: 4.798 líneas, ganancia 320.987,60, 0,63 % no rentables; bajo: 3.803, ganancia 100.785,47, 14,33 %; medio: 537, pérdida neta 58.817,00, 94,04 %; alto: 856, pérdida neta 76.559,05, 100 % no rentables. Entre descuentos altos, Binders acumula la mayor pérdida: 38.510,50. **Interpretación:** existe asociación descriptiva fuerte entre descuentos elevados y operaciones sin ganancia, sin probar causalidad. **Conclusión:** revisar las reglas de descuento alto, especialmente en Binders y Machines.
+
+| Rango | Registros | Ventas | Ganancia | Margen | Pérdidas | No rentables | Descuento promedio |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Sin descuento | 4.798 | 1.087.908,47 | 320.987,60 | 29,51 % | 0 | 0,63 % | 0 % |
+| Bajo | 3.803 | 846.522,24 | 100.785,47 | 11,91 % | 523 | 14,33 % | 19,68 % |
+| Medio | 537 | 298.541,41 | −58.817,00 | −19,70 % | 492 | 94,04 % | 36,70 % |
+| Alto | 856 | 64.228,74 | −76.559,05 | −119,20 % | 856 | 100 % | 71,89 % |
 
 ## Pregunta 7. Tendencias temporales
 

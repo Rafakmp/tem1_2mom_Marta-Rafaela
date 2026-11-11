@@ -1,12 +1,15 @@
-Docker Desktop.exe: proceso iniciado.
-docker info: failed to connect to the docker API at npipe:////./pipe/docker_engine; the system cannot find the file specified.
-Get-Service com.docker.service: Stopped.
-Start-Service com.docker.service: no se puede abrir el servicio com.docker.service en el equipo; acceso denegado.
-Intento inicial: Hive y Beeline no llegaron a ejecutarse.
-scripts/ejecutar_hive.ps1: docker compose up -d falló; "No se pudo iniciar el stack Hive".
+ESTADO FINAL VERIFICADO - 11/11/2026
+Docker Engine: 29.7.2.
+Contenedores iniciados: postgres, namenode, datanode, hive-metastore, hive-server.
+HiveServer2: healthy. Beeline: conectado a Apache Hive 4.0.1.
+DDL y carga: ejecutados. Registros importados: 9994.
+Preguntas 1 a 8: ejecutadas. Serie mensual: 48 meses.
+Salidas de Beeline: evidencias/hive/ (10 archivos).
+Errores Hive en las salidas finales: 0.
 
-Estado posterior en la misma sesión: Docker Engine 29.7.2 disponible.
-Docker Compose inició postgres, namenode, datanode, hive-metastore y hive-server.
-HiveServer2 llegó al estado healthy y Beeline conectó a Apache Hive 4.0.1.
-DDL, carga y preguntas 1 a 8 ejecutadas; salidas en evidencias/hive/.
-La carga devolvió 9994 filas. La consulta temporal final devolvió 48 meses.
+HISTORIAL DE CORRECCIONES
+El primer intento de Docker no accedió a //./pipe/docker_engine.
+El primer script Hive supuso el nombre hive-server; Compose asignó un nombre con prefijo.
+Se cambió a docker compose ps -q hive-server para obtener el ID del contenedor.
+La auditoría con 21 UNION ALL excedió el límite de contadores de Tez; se sustituyó por LATERAL VIEW STACK.
+TRUNC(date,'MM') produjo 1970-01-01; se sustituyó por DATE_FORMAT(date,'yyyy-MM-01').

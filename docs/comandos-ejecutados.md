@@ -36,3 +36,16 @@ rg -n 'Error:|ERROR :|FAILED:' evidencias\hive
 Docker Engine respondió `29.7.2`. El primer intento Hive encontró el nombre de contenedor distinto del supuesto. Se cambió el script para obtener el ID con `docker compose ps -q hive-server`. La consulta de calidad original falló por `Too many counters: 121 max=120`; se reemplazaron 21 ramas `UNION ALL` por una sola lectura con `LATERAL VIEW STACK`. La primera consulta mensual agrupó en 1970-01-01 por el comportamiento de `TRUNC()` en este Hive; se corrigió a `DATE_FORMAT(order_date,'yyyy-MM-01')`.
 
 La ejecución final guardó salidas de Beeline para DDL, carga y preguntas 1–8 en `evidencias/hive/`. La carga confirmó 9.994 filas, calidad confirmó 5.009 órdenes y 793 clientes sin anomalías, la serie mensual contiene 48 meses, y ninguna salida final contiene errores de Hive.
+
+El [script ejecutado](../scripts/ejecutar_hive.ps1) invocó `docker compose -f $Stack up -d postgres namenode datanode hive-metastore hive-server`, obtuvo el ID real mediante `docker compose -f $Stack ps -q hive-server`, esperó el estado `healthy` con `docker inspect`, copió el CSV y cada SQL con `docker cp`, y ejecutó cada archivo con `docker exec $hiveContainer sh -c 'HOME=/tmp beeline ... -f /tmp/archivo.sql 2>&1'`. Cada salida se guardó con `Tee-Object` en `evidencias/hive/` y se comprobó el código de salida.
+
+| Comprobación final | Resultado |
+|---|---:|
+| Versión de Docker Engine | 29.7.2 |
+| Versión de Apache Hive | 4.0.1 |
+| Filas importadas | 9.994 |
+| Órdenes únicas | 5.009 |
+| Clientes únicos | 793 |
+| Meses de 2014 a 2017 | 48 |
+| Archivos de evidencia Beeline | 10 |
+| Salidas finales con error Hive | 0 |
