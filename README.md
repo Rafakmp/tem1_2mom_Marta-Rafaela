@@ -1,34 +1,74 @@
-# Momento Evaluativo 2
-# Análisis Superstore Sales Dataset
+# Momento Evaluativo 2: Análisis Superstore Sales Dataset
 
-**Nombre:** Rafaela KIara Marta Puente
+**Estudiante:** Rafaela Kiara Marta Puente
 
-Proyecto de ingesta, auditoría y analítica de 9.994 líneas de venta de Sample Superstore en Apache Hive. El enunciado desarrolla ocho preguntas aunque menciona «doce» en los requisitos de repositorio; se implementan las ocho preguntas descritas.
+## 1. Descripción
 
-## Requisitos/ ejecución
+Proyecto de ingesta, auditoría y análisis de 9.994 registros de ventas del conjunto de datos *Sample Superstore*, utilizando Apache Hive y Beeline. Se implementan ocho consultas analíticas.
 
-Docker Desktop, Docker Compose y el CSV `data/Sample - Superstore.csv`. Se reutiliza el entorno Hive de la práctica L17 en `D:\UNIVALLE\BIGDATA\docker-hadoop-hive-parquet`.
+## 2. Objetivos
+
+- Cargar los datos de ventas en Apache Hive.
+- Revisar la calidad e integridad de los registros.
+- Analizar ventas, clientes, regiones y productos.
+- Identificar tendencias y patrones comerciales mediante consultas HiveQL.
+
+## 3. Requisitos
+
+- Windows 10/11.
+- Docker Desktop en ejecución.
+- Docker Compose.
+- PowerShell.
+- Archivo CSV: `data/Sample - Superstore.csv`.
+- Entorno Hive de la práctica anterior ubicado en `D:\docker-hadoop-hive-parquet`.
+
+## 4. Procedimiento de ejecución
+
+1. Abrir Docker Desktop y esperar a que esté iniciado.
+2. Abrir PowerShell en la carpeta principal del proyecto.
+3. Ejecutar el siguiente comando para iniciar Hive y ejecutar todas las consultas:
 
 ```powershell
 & .\scripts\ejecutar_hive.ps1
 ```
 
-El script inicia el stack, espera a HiveServer2, normaliza la codificación del CSV de Windows-1252 a UTF-8, ejecuta modelo, carga y preguntas en orden, y guarda la salida de Beeline en `evidencias/hive/`. La carga sobrescribe la tabla analítica. Fechas de origen: mes/día/año.
+4. El script inicia los contenedores, prepara el archivo CSV, crea las tablas, carga los datos y ejecuta las consultas en orden.
+5. Los resultados de Beeline se guardan automáticamente en:
 
-Para repetir desde una consulta sin volver a cargar datos: `& .\scripts\ejecutar_hive.ps1 -Desde '07_tendencias.sql'`.
+```text
+evidencias/hive/
+```
 
-## Estado verificado
+### Ejecutar desde una consulta específica
 
-La ejecución final se completó en Docker Engine 29.7.2 y Apache Hive 4.0.1. HiveServer2 quedó `healthy`; Beeline creó las dos tablas, cargó 9.994 registros y ejecutó las ocho preguntas. La auditoría encontró 5.009 órdenes, 793 clientes y ninguna anomalía en las reglas evaluadas. La serie temporal produjo 48 meses. Las diez salidas finales de Beeline no contienen errores Hive.
+Para continuar desde una consulta sin repetir la creación del modelo y la carga de datos:
 
-| Evidencia | Archivo |
-|---|---|
-| DDL y carga | [00_modelo.txt](evidencias/hive/00_modelo.txt), [01_carga.txt](evidencias/hive/01_carga.txt) |
-| Modelo y preguntas 2–4 | [01_modelo.txt](evidencias/hive/01_modelo.txt), [02_calidad.txt](evidencias/hive/02_calidad.txt), [03_regiones.txt](evidencias/hive/03_regiones.txt), [04_rfm.txt](evidencias/hive/04_rfm.txt) |
-| Preguntas 5–8 | [05_productos.txt](evidencias/hive/05_productos.txt), [06_descuentos.txt](evidencias/hive/06_descuentos.txt), [07_tendencias.txt](evidencias/hive/07_tendencias.txt), [08_pareto.txt](evidencias/hive/08_pareto.txt) |
+```powershell
+& .\scripts\ejecutar_hive.ps1 -Desde '07_tendencias.sql'
+```
 
-## Entregables
+Cambiar el nombre del archivo por la consulta desde la que se desea comenzar.
 
-[Diccionario](docs/diccionario.md) · [Consultas](sql/preguntas/) · [Resultados](docs/resultados.md) · [Optimización](docs/optimizacion.md) · [Evidencias](evidencias/) · [Comandos](docs/comandos-ejecutados.md).
+### Ejecución manual de consultas
 
-Fuente: [Sample Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final). La práctica LI17 se usó como referencia. Se declara apoyo de inteligencia artificial en scripts y documentación.
+También es posible conectarse a Hive mediante Beeline:
+
+```powershell
+docker compose -f "D:\docker-hadoop-hive-parquet\docker-compose.yml" exec hive-server beeline -u jdbc:hive2://localhost:10000/default
+```
+
+Una vez conectado, ejecutar las consultas:
+
+```sql
+SHOW DATABASES;
+USE db_superstore_rafaela;
+SHOW TABLES;
+```
+
+Para ejecutar un archivo SQL desde Beeline:
+
+```sql
+!run /tmp/07_tendencias.sql
+```
+
+Las consultas están disponibles en la carpeta `sql/preguntas/`.
