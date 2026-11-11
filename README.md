@@ -1,10 +1,11 @@
-# Examen práctico individual: Sample Superstore
+# Momento Evaluativo 2
+# Análisis Superstore Sales Dataset
 
-**Estudiante:** Rafaela Marta · Universidad del Valle · Segundo momento, noviembre de 2026.
+**Nombre:** Rafaela KIara Marta Puente
 
 Proyecto de ingesta, auditoría y analítica de 9.994 líneas de venta de Sample Superstore en Apache Hive. El enunciado desarrolla ocho preguntas aunque menciona «doce» en los requisitos de repositorio; se implementan las ocho preguntas descritas.
 
-## Requisitos y ejecución
+## Requisitos/ ejecución
 
 Docker Desktop, Docker Compose y el CSV `data/Sample - Superstore.csv`. Se reutiliza el entorno Hive de la práctica L17 en `D:\UNIVALLE\BIGDATA\docker-hadoop-hive-parquet`.
 
