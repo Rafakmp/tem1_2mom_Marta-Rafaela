@@ -1,0 +1,641 @@
+﻿{
+    "source":  "Sample - Superstore.csv",
+    "row_count":  9994,
+    "columns":  [
+                    "Row ID",
+                    "Order ID",
+                    "Order Date",
+                    "Ship Date",
+                    "Ship Mode",
+                    "Customer ID",
+                    "Customer Name",
+                    "Segment",
+                    "Country",
+                    "City",
+                    "State",
+                    "Postal Code",
+                    "Region",
+                    "Product ID",
+                    "Category",
+                    "Sub-Category",
+                    "Product Name",
+                    "Sales",
+                    "Quantity",
+                    "Discount",
+                    "Profit"
+                ],
+    "null_or_empty":  {
+                          "Row ID":  0,
+                          "Order ID":  0,
+                          "Order Date":  0,
+                          "Ship Date":  0,
+                          "Ship Mode":  0,
+                          "Customer ID":  0,
+                          "Customer Name":  0,
+                          "Segment":  0,
+                          "Country":  0,
+                          "City":  0,
+                          "State":  0,
+                          "Postal Code":  0,
+                          "Region":  0,
+                          "Product ID":  0,
+                          "Category":  0,
+                          "Sub-Category":  0,
+                          "Product Name":  0,
+                          "Sales":  0,
+                          "Quantity":  0,
+                          "Discount":  0,
+                          "Profit":  0
+                      },
+    "duplicate_row_ids":  0,
+    "unique_orders":  5009,
+    "unique_customers":  793,
+    "unique_products":  1862,
+    "min_date":  "2014-01-03",
+    "max_date":  "2017-12-30",
+    "invalid_dates":  0,
+    "nonpositive_sales":  0,
+    "invalid_discounts":  0,
+    "ship_before_order":  0,
+    "total_sales":  2297200.86,
+    "total_profit":  286397.02,
+    "regions":  [
+                    {
+                        "region":  "West",
+                        "sales":  725457.82,
+                        "profit":  108418.45
+                    },
+                    {
+                        "region":  "East",
+                        "sales":  678781.24,
+                        "profit":  91522.78
+                    },
+                    {
+                        "region":  "South",
+                        "sales":  391721.90,
+                        "profit":  46749.43
+                    },
+                    {
+                        "region":  "Central",
+                        "sales":  501239.89,
+                        "profit":  39706.36
+                    }
+                ],
+    "annual":  [
+                   {
+                       "region":  "Central",
+                       "year":  2014,
+                       "sales":  103838.16,
+                       "profit":  539.55
+                   },
+                   {
+                       "region":  "Central",
+                       "year":  2015,
+                       "sales":  102874.22,
+                       "profit":  11716.80
+                   },
+                   {
+                       "region":  "Central",
+                       "year":  2016,
+                       "sales":  147429.38,
+                       "profit":  19899.16
+                   },
+                   {
+                       "region":  "Central",
+                       "year":  2017,
+                       "sales":  147098.13,
+                       "profit":  7550.84
+                   },
+                   {
+                       "region":  "East",
+                       "year":  2014,
+                       "sales":  128680.46,
+                       "profit":  17059.61
+                   },
+                   {
+                       "region":  "East",
+                       "year":  2015,
+                       "sales":  156332.06,
+                       "profit":  21091.01
+                   },
+                   {
+                       "region":  "East",
+                       "year":  2016,
+                       "sales":  180685.82,
+                       "profit":  20141.60
+                   },
+                   {
+                       "region":  "East",
+                       "year":  2017,
+                       "sales":  213082.90,
+                       "profit":  33230.56
+                   },
+                   {
+                       "region":  "South",
+                       "year":  2014,
+                       "sales":  103845.84,
+                       "profit":  11879.12
+                   },
+                   {
+                       "region":  "South",
+                       "year":  2015,
+                       "sales":  71359.98,
+                       "profit":  8318.59
+                   },
+                   {
+                       "region":  "South",
+                       "year":  2016,
+                       "sales":  93610.22,
+                       "profit":  17702.81
+                   },
+                   {
+                       "region":  "South",
+                       "year":  2017,
+                       "sales":  122905.86,
+                       "profit":  8848.91
+                   },
+                   {
+                       "region":  "West",
+                       "year":  2014,
+                       "sales":  147883.03,
+                       "profit":  20065.69
+                   },
+                   {
+                       "region":  "West",
+                       "year":  2015,
+                       "sales":  139966.25,
+                       "profit":  20492.19
+                   },
+                   {
+                       "region":  "West",
+                       "year":  2016,
+                       "sales":  187480.18,
+                       "profit":  24051.61
+                   },
+                   {
+                       "region":  "West",
+                       "year":  2017,
+                       "sales":  250128.37,
+                       "profit":  43808.96
+                   }
+               ],
+    "discounts":  [
+                      {
+                          "range":  "0_sin_descuento",
+                          "count":  4798,
+                          "sales":  1087908.47,
+                          "profit":  320987.60,
+                          "losses":  0,
+                          "unprofitable":  30,
+                          "unprofitable_pct":  0.63
+                      },
+                      {
+                          "range":  "1_bajo",
+                          "count":  3803,
+                          "sales":  846522.24,
+                          "profit":  100785.47,
+                          "losses":  523,
+                          "unprofitable":  545,
+                          "unprofitable_pct":  14.33
+                      },
+                      {
+                          "range":  "2_medio",
+                          "count":  537,
+                          "sales":  298541.41,
+                          "profit":  -58817.00,
+                          "losses":  492,
+                          "unprofitable":  505,
+                          "unprofitable_pct":  94.04
+                      },
+                      {
+                          "range":  "3_alto",
+                          "count":  856,
+                          "sales":  64228.74,
+                          "profit":  -76559.05,
+                          "losses":  856,
+                          "unprofitable":  856,
+                          "unprofitable_pct":  100
+                      }
+                  ],
+    "top_months":  [
+                       {
+                           "month":  "2017-11",
+                           "sales":  118447.82,
+                           "profit":  9690.10
+                       },
+                       {
+                           "month":  "2016-12",
+                           "sales":  96999.04,
+                           "profit":  17885.31
+                       },
+                       {
+                           "month":  "2017-09",
+                           "sales":  87866.65,
+                           "profit":  10991.56
+                       }
+                   ],
+    "bottom_months":  [
+                          {
+                              "month":  "2014-02",
+                              "sales":  4519.89,
+                              "profit":  862.31
+                          },
+                          {
+                              "month":  "2015-02",
+                              "sales":  11951.41,
+                              "profit":  2813.85
+                          },
+                          {
+                              "month":  "2014-01",
+                              "sales":  14236.90,
+                              "profit":  2450.19
+                          }
+                      ],
+    "top_products_profit":  [
+                                {
+                                    "id":  "TEC-CO-10004722",
+                                    "name":  "Canon imageCLASS 2200 Advanced Copier",
+                                    "category":  "Technology",
+                                    "sales":  61599.82,
+                                    "profit":  25199.93,
+                                    "quantity":  20
+                                },
+                                {
+                                    "id":  "OFF-BI-10003527",
+                                    "name":  "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind",
+                                    "category":  "Office Supplies",
+                                    "sales":  27453.38,
+                                    "profit":  7753.04,
+                                    "quantity":  31
+                                },
+                                {
+                                    "id":  "TEC-CO-10001449",
+                                    "name":  "Hewlett Packard LaserJet 3310 Copier",
+                                    "category":  "Technology",
+                                    "sales":  18839.69,
+                                    "profit":  6983.88,
+                                    "quantity":  38
+                                },
+                                {
+                                    "id":  "TEC-CO-10003763",
+                                    "name":  "Canon PC1060 Personal Laser Copier",
+                                    "category":  "Technology",
+                                    "sales":  11619.83,
+                                    "profit":  4570.93,
+                                    "quantity":  19
+                                },
+                                {
+                                    "id":  "TEC-AC-10002049",
+                                    "name":  "Logitech G19 Programmable Gaming Keyboard",
+                                    "category":  "Technology",
+                                    "sales":  13756.54,
+                                    "profit":  4425.34,
+                                    "quantity":  60
+                                }
+                            ],
+    "bottom_products_profit":  [
+                                   {
+                                       "id":  "TEC-MA-10000418",
+                                       "name":  "Cubify CubeX 3D Printer Double Head Print",
+                                       "category":  "Technology",
+                                       "sales":  11099.96,
+                                       "profit":  -8879.97,
+                                       "quantity":  9
+                                   },
+                                   {
+                                       "id":  "TEC-MA-10000822",
+                                       "name":  "Lexmark MX611dhe Monochrome Laser Printer",
+                                       "category":  "Technology",
+                                       "sales":  16829.90,
+                                       "profit":  -4589.97,
+                                       "quantity":  18
+                                   },
+                                   {
+                                       "id":  "TEC-MA-10004125",
+                                       "name":  "Cubify CubeX 3D Printer Triple Head Print",
+                                       "category":  "Technology",
+                                       "sales":  7999.98,
+                                       "profit":  -3839.99,
+                                       "quantity":  4
+                                   },
+                                   {
+                                       "id":  "FUR-TA-10000198",
+                                       "name":  "Chromcraft Bull-Nose Wood Oval Conference Tables \u0026 Bases",
+                                       "category":  "Furniture",
+                                       "sales":  9917.64,
+                                       "profit":  -2876.12,
+                                       "quantity":  27
+                                   },
+                                   {
+                                       "id":  "FUR-TA-10001889",
+                                       "name":  "Bush Advantage Collection Racetrack Conference Table",
+                                       "category":  "Furniture",
+                                       "sales":  9544.72,
+                                       "profit":  -1934.40,
+                                       "quantity":  33
+                                   }
+                               ],
+    "top_products_quantity":  [
+                                  {
+                                      "id":  "TEC-AC-10003832",
+                                      "name":  "Logitech P710e Mobile Speakerphone",
+                                      "category":  "Technology",
+                                      "sales":  11203.76,
+                                      "profit":  1987.93,
+                                      "quantity":  75
+                                  },
+                                  {
+                                      "id":  "OFF-PA-10001970",
+                                      "name":  "Xerox 1881",
+                                      "category":  "Office Supplies",
+                                      "sales":  2167.35,
+                                      "profit":  1006.44,
+                                      "quantity":  70
+                                  },
+                                  {
+                                      "id":  "OFF-BI-10001524",
+                                      "name":  "GBC Premium Transparent Covers with Diagonal Lined Pattern",
+                                      "category":  "Office Supplies",
+                                      "sales":  780.46,
+                                      "profit":  49.51,
+                                      "quantity":  67
+                                  },
+                                  {
+                                      "id":  "FUR-CH-10002647",
+                                      "name":  "Situations Contoured Folding Chairs, 4/Set",
+                                      "category":  "Furniture",
+                                      "sales":  3641.27,
+                                      "profit":  234.23,
+                                      "quantity":  64
+                                  },
+                                  {
+                                      "id":  "OFF-BI-10002026",
+                                      "name":  "Avery Arch Ring Binders",
+                                      "category":  "Office Supplies",
+                                      "sales":  2068.82,
+                                      "profit":  349.63,
+                                      "quantity":  64
+                                  }
+                              ],
+    "top_products_sales":  [
+                               {
+                                   "id":  "TEC-CO-10004722",
+                                   "name":  "Canon imageCLASS 2200 Advanced Copier",
+                                   "category":  "Technology",
+                                   "sales":  61599.82,
+                                   "profit":  25199.93,
+                                   "quantity":  20
+                               },
+                               {
+                                   "id":  "OFF-BI-10003527",
+                                   "name":  "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind",
+                                   "category":  "Office Supplies",
+                                   "sales":  27453.38,
+                                   "profit":  7753.04,
+                                   "quantity":  31
+                               },
+                               {
+                                   "id":  "TEC-MA-10002412",
+                                   "name":  "Cisco TelePresence System EX90 Videoconferencing Unit",
+                                   "category":  "Technology",
+                                   "sales":  22638.48,
+                                   "profit":  -1811.08,
+                                   "quantity":  6
+                               },
+                               {
+                                   "id":  "FUR-CH-10002024",
+                                   "name":  "HON 5400 Series Task Chairs for Big and Tall",
+                                   "category":  "Furniture",
+                                   "sales":  21870.58,
+                                   "profit":  0.00,
+                                   "quantity":  39
+                               },
+                               {
+                                   "id":  "OFF-BI-10001359",
+                                   "name":  "GBC DocuBind TL300 Electric Binding System",
+                                   "category":  "Office Supplies",
+                                   "sales":  19823.48,
+                                   "profit":  2233.51,
+                                   "quantity":  37
+                               }
+                           ],
+    "category_top_profit":  [
+                                {
+                                    "id":  "FUR-CH-10000454",
+                                    "name":  "Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back",
+                                    "category":  "Furniture",
+                                    "sales":  10637.53,
+                                    "profit":  1927.44,
+                                    "quantity":  51
+                                },
+                                {
+                                    "id":  "FUR-CH-10004063",
+                                    "name":  "Global Deluxe High-Back Manager\u0027s Chair",
+                                    "category":  "Furniture",
+                                    "sales":  8665.19,
+                                    "profit":  1558.59,
+                                    "quantity":  35
+                                },
+                                {
+                                    "id":  "FUR-CH-10002320",
+                                    "name":  "Hon Pagoda Stacking Chairs",
+                                    "category":  "Furniture",
+                                    "sales":  6483.80,
+                                    "profit":  1540.70,
+                                    "quantity":  22
+                                },
+                                {
+                                    "id":  "FUR-CH-10004086",
+                                    "name":  "Hon 4070 Series Pagoda Armless Upholstered Stacking Chairs",
+                                    "category":  "Furniture",
+                                    "sales":  8431.00,
+                                    "profit":  1388.63,
+                                    "quantity":  34
+                                },
+                                {
+                                    "id":  "FUR-CH-10001854",
+                                    "name":  "Office Star - Professional Matrix Back Chair with 2-to-1 Synchro Tilt and Mesh Fabric Seat",
+                                    "category":  "Furniture",
+                                    "sales":  8774.50,
+                                    "profit":  1305.65,
+                                    "quantity":  28
+                                },
+                                {
+                                    "id":  "OFF-BI-10003527",
+                                    "name":  "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind",
+                                    "category":  "Office Supplies",
+                                    "sales":  27453.38,
+                                    "profit":  7753.04,
+                                    "quantity":  31
+                                },
+                                {
+                                    "id":  "OFF-BI-10001120",
+                                    "name":  "Ibico EPK-21 Electric Binding System",
+                                    "category":  "Office Supplies",
+                                    "sales":  15875.92,
+                                    "profit":  3345.28,
+                                    "quantity":  13
+                                },
+                                {
+                                    "id":  "OFF-AP-10002945",
+                                    "name":  "Honeywell Enviracaire Portable HEPA Air Cleaner for 17\u0027 x 22\u0027 Room",
+                                    "category":  "Office Supplies",
+                                    "sales":  11304.44,
+                                    "profit":  3247.02,
+                                    "quantity":  40
+                                },
+                                {
+                                    "id":  "OFF-BI-10003925",
+                                    "name":  "Fellowes PB300 Plastic Comb Binding Machine",
+                                    "category":  "Office Supplies",
+                                    "sales":  8070.19,
+                                    "profit":  2518.06,
+                                    "quantity":  27
+                                },
+                                {
+                                    "id":  "OFF-BI-10004600",
+                                    "name":  "Ibico Ibimaster 300 Manual Binding System",
+                                    "category":  "Office Supplies",
+                                    "sales":  7985.38,
+                                    "profit":  2318.34,
+                                    "quantity":  28
+                                },
+                                {
+                                    "id":  "TEC-CO-10004722",
+                                    "name":  "Canon imageCLASS 2200 Advanced Copier",
+                                    "category":  "Technology",
+                                    "sales":  61599.82,
+                                    "profit":  25199.93,
+                                    "quantity":  20
+                                },
+                                {
+                                    "id":  "TEC-CO-10001449",
+                                    "name":  "Hewlett Packard LaserJet 3310 Copier",
+                                    "category":  "Technology",
+                                    "sales":  18839.69,
+                                    "profit":  6983.88,
+                                    "quantity":  38
+                                },
+                                {
+                                    "id":  "TEC-CO-10003763",
+                                    "name":  "Canon PC1060 Personal Laser Copier",
+                                    "category":  "Technology",
+                                    "sales":  11619.83,
+                                    "profit":  4570.93,
+                                    "quantity":  19
+                                },
+                                {
+                                    "id":  "TEC-AC-10002049",
+                                    "name":  "Logitech G19 Programmable Gaming Keyboard",
+                                    "category":  "Technology",
+                                    "sales":  13756.54,
+                                    "profit":  4425.34,
+                                    "quantity":  60
+                                },
+                                {
+                                    "id":  "TEC-MA-10001127",
+                                    "name":  "HP Designjet T520 Inkjet Large Format Printer - 24\" Color",
+                                    "category":  "Technology",
+                                    "sales":  18374.90,
+                                    "profit":  4094.98,
+                                    "quantity":  12
+                                }
+                            ],
+    "rfm_segments":  [
+                         {
+                             "segment":  "otros",
+                             "count":  357
+                         },
+                         {
+                             "segment":  "alto_valor",
+                             "count":  104
+                         },
+                         {
+                             "segment":  "en_riesgo",
+                             "count":  201
+                         },
+                         {
+                             "segment":  "recurrente",
+                             "count":  131
+                         }
+                     ],
+    "rfm_top":  [
+                    {
+                        "customer":  "SM-20320",
+                        "recency":  79,
+                        "frequency":  5,
+                        "monetary":  25043.05,
+                        "r":  3,
+                        "f":  2,
+                        "m":  5
+                    },
+                    {
+                        "customer":  "TC-20980",
+                        "recency":  399,
+                        "frequency":  5,
+                        "monetary":  19052.22,
+                        "r":  1,
+                        "f":  2,
+                        "m":  5
+                    },
+                    {
+                        "customer":  "RB-19360",
+                        "recency":  96,
+                        "frequency":  6,
+                        "monetary":  15117.34,
+                        "r":  3,
+                        "f":  3,
+                        "m":  5
+                    },
+                    {
+                        "customer":  "TA-21385",
+                        "recency":  69,
+                        "frequency":  4,
+                        "monetary":  14595.62,
+                        "r":  3,
+                        "f":  2,
+                        "m":  5
+                    },
+                    {
+                        "customer":  "AB-10105",
+                        "recency":  41,
+                        "frequency":  10,
+                        "monetary":  14473.57,
+                        "r":  4,
+                        "f":  5,
+                        "m":  5
+                    }
+                ],
+    "high_discount_worst_subcategories":  [
+                                              {
+                                                  "subcategory":  "Binders",
+                                                  "count":  613,
+                                                  "profit":  -38510.50
+                                              },
+                                              {
+                                                  "subcategory":  "Machines",
+                                                  "count":  23,
+                                                  "profit":  -19579.32
+                                              },
+                                              {
+                                                  "subcategory":  "Appliances",
+                                                  "count":  67,
+                                                  "profit":  -8629.64
+                                              },
+                                              {
+                                                  "subcategory":  "Furnishings",
+                                                  "count":  138,
+                                                  "profit":  -5944.66
+                                              },
+                                              {
+                                                  "subcategory":  "Bookcases",
+                                                  "count":  15,
+                                                  "profit":  -3894.94
+                                              }
+                                          ],
+    "pareto":  {
+                   "profit80":  164,
+                   "sales80":  414,
+                   "products":  1862
+               }
+}
